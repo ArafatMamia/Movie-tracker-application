@@ -1,0 +1,12 @@
+// useEffect(() => {
+  //   const ratingList = movies[clicked].map(({ rating }) => rating);
+  //   let maxRating = Math.max(...ratingList);
+  //   console.log("maxRating: ", maxRating);
+  //   movies[clicked].forEach(({ genre, rating }) => {
+  //     console.log("inside useffect", genre, rating);
+  //     if (maxRating === rating) {
+  //       setFavorite(genre);
+  //       console.log("genre", genre);
+  //     }
+  //   });
+  // }, [clicked]);

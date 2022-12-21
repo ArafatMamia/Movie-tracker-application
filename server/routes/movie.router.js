@@ -4,7 +4,7 @@ const {
   getMovie,
   updateMovie,
   deleteMovie,
-} = require("../controllers/movie.controller");
+} = require("./movie.controller");
 const moviesRouter = express.Router();
 
 //add movie
