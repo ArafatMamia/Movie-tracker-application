@@ -1,8 +1,9 @@
-.addProduct{
+.addMovie{
     background-color: white;
     height: 100vh;
+
 }
-.addProduct__container{
+.addMovie__container{
   width: 50%;
   min-width: 450px;
   height: fit-content;

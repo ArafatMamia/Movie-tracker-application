@@ -1,18 +1,31 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "../axiosInstance";
 import "./Home.css";
 import Movie from "./Movie";
 
 function Home() {
   const [movies, setMovies] = useState("");
+  const [favorite, setFavorite] = useState("");
 
   useEffect(() => {
     const fetchdata = async () => {
       const data = await axios.get("/movie/get");
-      setMovies(data);
+      console.log("data", data);
+      setMovies((data));
     };
     fetchdata();
   }, []);
+  const ratingList = movies && movies.data.map(({rating}) => (
+    rating))
+  console.log(ratingList);
+  const maxRating = Math.max(...ratingList)
+  
+  
+
+ 
+ 
+
 
   return (
     <div className="home">
@@ -22,7 +35,7 @@ function Home() {
             <Movie
               id={movie._id}
               title={movie.title}
-              watchdate={movie.date}
+              watchdate={movie.watchDate}
               image={movie.imageURL}
               rating={movie.rating}
               genre={movie.genre}
@@ -30,13 +43,15 @@ function Home() {
           ))}
       </div>
       <div className="home__info">
-        <h2>Favorite genre: </h2>
+        <h2>Favorite genre: {favorite}</h2>
         <h2>Average number of movies watched per month.</h2>
         <h2>Current mood</h2>
       </div>
-      <div className="home_add">
-        <button>Add Movie</button>
-      </div>
+      <Link to="/addMovie">
+        <div className="home_add">
+          <button>Add Movie</button>
+        </div>
+      </Link>
     </div>
   );
 }

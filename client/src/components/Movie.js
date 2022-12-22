@@ -1,20 +1,32 @@
 import React from "react";
+import axios from "../axiosInstance";
+import { Link } from "react-router-dom";
 import moment from "moment";
 import "./Movie.css";
 
-function Movie({ id, title, watchdate, image, rating,genre}) {
+function Movie({ id, title, watchdate, image, rating, genre }) {
+  console.log("movie", id, watchdate);
+  const deleteMovie = (e) => {
+    e.preventDefault();
+
+    axios
+      .delete(`/movie/delete/${id}`, { id: id })
+      .then(() => {
+        console.log("seccesful");
+      })
+      .catch((error) => alert(error.message));
+  };
   return (
     <div className="movie">
       <div className="movie__info">
         <p className="title">{title}</p>
         <p className="movie__watchdate">
           <small>
-            <p>{moment.unix(watchdate).format("MMMM Do YYYY, h:mma")}</p>
+            <p>{moment(watchdate).format("MMMM Do YYYY")}</p>
             <p>{genre}</p>
           </small>
         </p>
         <div className="movie__rating">
-          {" "}
           {Array(rating)
             .fill()
             .map((_, i) => (
@@ -31,10 +43,13 @@ function Movie({ id, title, watchdate, image, rating,genre}) {
         />
       )}
       <div className="movie__button">
-        <button className="movie_option">Update</button>
-        <button className="movie_option">Delete</button>
+        <Link to="/updateMovie">
+          <button className="movie_option update">Update</button>
+        </Link>
+        <button className="movie_option" onClick={deleteMovie}>
+          Delete
+        </button>
       </div>
-
     </div>
   );
 }

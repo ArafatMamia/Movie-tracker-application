@@ -4,24 +4,26 @@ import "./AddMovie.css";
 function AddMovie() {
   const [title, setTitle] = useState("");
   const [watchDate, setWatchDate] = useState("");
+  const [genre, setGenre] = useState("");
   const [rating, setRating] = useState(0);
 
   const addMovie = (e) => {
     e.preventDefault();
 
     axios
-      .post("/movie/add", { title, watchDate, rating })
+      .post("/movie/add", { title, watchDate, genre, rating })
       .then(() => {
         setTitle("");
         setWatchDate("");
+        setGenre("");
         setRating(0);
       })
       .catch((error) => alert(error.message));
   };
 
   return (
-    <div className="addProduct">
-      <div className="addProduct__container">
+    <div className="addMovie">
+      <div className="addMovie__container">
         <div className="container__formContainer">
           <h3>Add Movie</h3>
 
@@ -31,6 +33,14 @@ function AddMovie() {
               type="text"
               onChange={(e) => setTitle(e.target.value)}
               value={title}
+            />
+          </div>
+          <div className="container__inputContainer">
+            <p>Genre</p>
+            <input
+              type="text"
+              onChange={(e) => setGenre(e.target.value)}
+              value={genre}
             />
           </div>
           <div className="container__inputContainer">
