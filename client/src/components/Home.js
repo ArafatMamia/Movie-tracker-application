@@ -16,14 +16,14 @@ function Home() {
     };
     fetchdata();
   }, []);
+
   useEffect(() => {
     const ratingList = movies && movies.data.map(({ rating }) => rating);
   console.log(ratingList);
   const maxRating = Math.max(...ratingList);
   for (const property in movies.data) {
     if (movies.data[property]['rating'] === maxRating){
-      setFavorite([...movies.data[property]['genre']])
-      console.log(movies.data[property]['genre']);
+      setFavorite([movies.data[property]['genre']])
       
     }
     

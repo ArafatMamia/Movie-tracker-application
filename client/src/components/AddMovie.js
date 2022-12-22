@@ -33,6 +33,7 @@ function AddMovie() {
               type="text"
               onChange={(e) => setTitle(e.target.value)}
               value={title}
+              required
             />
           </div>
           <div className="container__inputContainer">
@@ -41,6 +42,7 @@ function AddMovie() {
               type="text"
               onChange={(e) => setGenre(e.target.value)}
               value={genre}
+              required
             />
           </div>
           <div className="container__inputContainer">
@@ -49,6 +51,7 @@ function AddMovie() {
               type="date"
               onChange={(e) => setWatchDate(e.target.value)}
               value={watchDate}
+              required
             />
           </div>
           <div className="container__inputContainer">
@@ -59,6 +62,7 @@ function AddMovie() {
               value={rating}
               max={5}
               min={1}
+              required
             />
           </div>
 

@@ -1,19 +1,35 @@
 import React from "react";
 import axios from "../axiosInstance";
 import { Link } from "react-router-dom";
+import { useStateValue } from "./StateProvider";
 import moment from "moment";
 import "./Movie.css";
 
 function Movie({ id, title, watchdate, image, rating, genre }) {
+  const [{ basket }, dispatch] = useStateValue();
   const deleteMovie = (e) => {
     e.preventDefault();
 
     axios
-      .delete(`/movie/delete/${id}`, { id: id })
+      .post('/movie/delete', { id: id })
       .then(() => {
         console.log("seccesful");
       })
       .catch((error) => alert(error.message));
+      console.log('id', id);
+  };
+const updateMovie = (e) => {
+  
+    //dispatch the item into data layer
+
+    dispatch({
+      type: "CURRENT ID",
+      item: {
+        id: id,
+        
+      },
+    });
+    console.log('basket', basket);
   };
   return (
     <div className="movie">
@@ -43,9 +59,9 @@ function Movie({ id, title, watchdate, image, rating, genre }) {
       )}
       <div className="movie__button">
         <Link to="/updateMovie">
-          <button className="movie_option update">Update</button>
+          <button className="movie_option update" onClick={updateMovie}>Update</button>
         </Link>
-        <button className="movie_option" onClick={deleteMovie}>
+        <button className="movie_option" onClick={deleteMovie} >
           Delete
         </button>
       </div>

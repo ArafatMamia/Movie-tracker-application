@@ -1,20 +1,23 @@
 import axios from "../axiosInstance";
 import React, { useState } from "react";
+import { useStateValue } from "./StateProvider";
 import "./UpdateMovie.css";
-function UpdateMovie({ id }) {
-  console.log("idupdate", id);
+function UpdateMovie() {
+  const [{ basket }, dispatch] = useStateValue();
   const [title, setTitle] = useState("");
   const [watchDate, setWatchDate] = useState("");
+  const [genre, setGenre] = useState("");
   const [rating, setRating] = useState(0);
 
   const updateMovie = (e) => {
     e.preventDefault();
-
+   console.log('basket',basket);
     axios
-      .post("/movie/update/id", { title, watchDate, rating })
+      .post("/movie/update", { id: basket.id,title, genre, watchDate, rating })
       .then(() => {
         setTitle("");
         setWatchDate("");
+        setGenre("")
         setRating(0);
       })
       .catch((error) => alert(error.message));
@@ -32,14 +35,25 @@ function UpdateMovie({ id }) {
               type="text"
               onChange={(e) => setTitle(e.target.value)}
               value={title}
+              required
             />
           </div>
+          <div className="container__inputContainer">
+            <p>Genre</p>
+            <input
+              type="text"
+              onChange={(e) => setGenre(e.target.value)}
+              value={genre}
+              required
+            />
+            </div>
           <div className="container__inputContainer">
             <p>Watchdate</p>
             <input
               type="date"
               onChange={(e) => setWatchDate(e.target.value)}
               value={watchDate}
+              required
             />
           </div>
           <div className="container__inputContainer">
@@ -50,6 +64,7 @@ function UpdateMovie({ id }) {
               value={rating}
               max={5}
               min={1}
+              required
             />
           </div>
 

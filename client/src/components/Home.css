@@ -1,5 +1,6 @@
 .home{
-    padding: 20px 20px;
+    width: 100%;
+    padding: 10px 10px;
     display: flex;
     margin: auto;
     flex-direction: column;
@@ -7,9 +8,10 @@
 
 }
 .home__row{
-    width: 100%; 
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
     margin-left: 5px;
     margin-right: 5px;
 }
