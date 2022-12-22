@@ -6,7 +6,7 @@ import Movie from "./Movie";
 
 function Home() {
   const [movies, setMovies] = useState("");
-  const [favorite, setFavorite] = useState("");
+  const [favorite, setFavorite] = useState([""]);
 
   useEffect(() => {
     const fetchdata = async () => {
@@ -16,12 +16,20 @@ function Home() {
     };
     fetchdata();
   }, []);
-  const ratingList = movies && movies.data.map(({ rating }) => rating);
+  useEffect(() => {
+    const ratingList = movies && movies.data.map(({ rating }) => rating);
   console.log(ratingList);
   const maxRating = Math.max(...ratingList);
   for (const property in movies.data) {
-    console.log("property", movies[property]["rating"]);
+    if (movies.data[property]['rating'] === maxRating){
+      setFavorite([...movies.data[property]['genre']])
+      console.log(movies.data[property]['genre']);
+      
+    }
+    
   }
+  }, [movies]);
+  
 
   return (
     <div className="home">
