@@ -14,6 +14,6 @@ moviesRouter.get("/get", getMovie);
 //update movie
 moviesRouter.put("update/:index", updateMovie);
 //delete movie
-moviesRouter.delete("delete", deleteMovie);
+moviesRouter.post("/delete", deleteMovie);
 
 module.exports = moviesRouter;

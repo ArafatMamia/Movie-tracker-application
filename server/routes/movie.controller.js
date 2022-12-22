@@ -1,5 +1,5 @@
 const movies = require("../models/movies.schema");
-
+ObjectId = require('mongoose').ObjectID;
 function addMovie(req, res) {
   console.log("req body", req.body);
   const movieDetail = req.body;
@@ -36,13 +36,17 @@ function updateMovie(req, res) {
   });
 }
 function deleteMovie(req, res) {
-  console.log(req.body);
-  // movies.delete({ _id: req.body.id }, (err) => {
-  //   if (err) {
-  //     res.status(500).send(err.message);
-  //     console.log(err);
-  //   }
-  // });
+  console.log('delete movies', req.body);
+  const idValue = req.body.id
+  movies.deleteOne({ _id: (idValue)}, (err) => {
+    if (err) {
+      res.status(500).send(err.message);
+      console.log(err);
+    }else {
+      res.status(201).send('deleted');
+      console.log(deleted);
+    }
+  });
 }
 module.exports = {
   addMovie,
