@@ -25,7 +25,7 @@ function getMovie(req, res) {
 }
 function updateMovie(req, res) {
   const movieDetail = req.body;
-
+console.log('update moveis', movieDetail);
   movies.updateOne(movieDetail, (err, data) => {
     if (err) {
       res.status(500).send(err.message);

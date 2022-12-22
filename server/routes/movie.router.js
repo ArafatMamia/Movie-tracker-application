@@ -12,7 +12,7 @@ moviesRouter.post("/add", addMovie);
 //get movie
 moviesRouter.get("/get", getMovie);
 //update movie
-moviesRouter.put("update/:index", updateMovie);
+moviesRouter.post("/update", updateMovie);
 //delete movie
 moviesRouter.post("/delete", deleteMovie);
 
