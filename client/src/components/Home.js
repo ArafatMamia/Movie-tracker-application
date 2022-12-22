@@ -12,20 +12,16 @@ function Home() {
     const fetchdata = async () => {
       const data = await axios.get("/movie/get");
       console.log("data", data);
-      setMovies((data));
+      setMovies(data);
     };
     fetchdata();
   }, []);
-  const ratingList = movies && movies.data.map(({rating}) => (
-    rating))
+  const ratingList = movies && movies.data.map(({ rating }) => rating);
   console.log(ratingList);
-  const maxRating = Math.max(...ratingList)
-  
-  
-
- 
- 
-
+  const maxRating = Math.max(...ratingList);
+  for (const property in movies.data) {
+    console.log("property", movies[property]["rating"]);
+  }
 
   return (
     <div className="home">

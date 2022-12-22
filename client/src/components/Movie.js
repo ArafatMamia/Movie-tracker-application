@@ -5,7 +5,6 @@ import moment from "moment";
 import "./Movie.css";
 
 function Movie({ id, title, watchdate, image, rating, genre }) {
-  console.log("movie", id, watchdate);
   const deleteMovie = (e) => {
     e.preventDefault();
 
