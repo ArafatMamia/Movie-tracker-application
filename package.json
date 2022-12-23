@@ -1,0 +1,23 @@
+{
+  "name": "movie-tracker-application",
+  "version": "1.0.0",
+  "description": "movie tracker application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "npm run watch --prefix server",
+    "client": "npm start --prefix client",
+    "watch": " npm run server & npm run client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArafatMamia/Movie-tracker-application.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArafatMamia/Movie-tracker-application/issues"
+  },
+  "homepage": "https://github.com/ArafatMamia/Movie-tracker-application#readme"
+}

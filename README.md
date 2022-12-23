@@ -1,7 +1,7 @@
 # Movie-tracker-application
-movies = {
-action: [],
-comedy: [],
-Adventure: [],
-Horror: [],
-}
+
+# used stacks: React, express
+
+# Database: mongodb
+
+# to run the client and the server at once --> npm run watch(for mac)
