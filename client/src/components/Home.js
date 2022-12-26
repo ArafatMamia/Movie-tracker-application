@@ -15,7 +15,7 @@ function Home() {
       setMovies(data);
     };
     fetchdata();
-  }, []);
+  }, [movies]);
 
   useEffect(() => {
     const ratingList = movies && movies.data.map(({ rating }) => rating);

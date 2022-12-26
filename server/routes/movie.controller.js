@@ -35,18 +35,26 @@ console.log('update moveis', movieDetail);
     }
   });
 }
-function deleteMovie(req, res) {
+async function deleteMovie(req, res) {
   console.log('delete movies', req.body);
   const idValue = req.body.id
-  movies.deleteOne({ _id: (idValue)}, (err) => {
-    if (err) {
-      res.status(500).send(err.message);
-      console.log(err);
-    }else {
-      res.status(201).send('deleted');
-      console.log(deleted);
-    }
-  });
+  const result = await movies.deleteOne({ _id: (idValue)})
+  if(result.deletedCount === 1){
+     res.status(201).send('deleted')
+  }
+  else{
+    res.status(500).send(err.message);
+    console.log(err);
+  }
+  //  (data,err) => {
+  //   if (err) {
+  //     res.status(500).send(err.message);
+  //     console.log(err);
+  //   }else {
+  //     res.status(201).send(data);
+  //     console.log(deleted);
+  //   }
+  // });
 }
 module.exports = {
   addMovie,

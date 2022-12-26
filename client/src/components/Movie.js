@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "../axiosInstance";
 import { Link } from "react-router-dom";
 import { useStateValue } from "./StateProvider";
@@ -7,17 +7,19 @@ import "./Movie.css";
 
 function Movie({ id, title, watchdate, image, rating, genre }) {
   const [{ basket }, dispatch] = useStateValue();
+
+
+  
   const deleteMovie = (e) => {
     e.preventDefault();
-
     axios
       .post('/movie/delete', { id: id })
       .then(() => {
-        console.log("seccesful");
+        console.log("successful");
       })
       .catch((error) => alert(error.message));
       console.log('id', id);
-  };
+  }
 const updateMovie = (e) => {
   
     //dispatch the item into data layer
